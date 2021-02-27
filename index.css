@@ -1,0 +1,49 @@
+* {
+    box-sizing: border-box;
+}
+
+body, html {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.5;
+    background-color: #f8f8f8;
+}
+
+header {
+    text-align: center;
+    width: 100%;
+    color: #daddd8;
+    background-color: #273036;
+    margin: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 24px;
+}
+
+main {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 12px;
+    width: 100%;
+    max-width: 700px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 12px;
+}
+
+a {
+    text-decoration: none;
+    color: #1bb423;
+}
+
+p {
+    font-size: large;
+}

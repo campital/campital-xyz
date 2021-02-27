@@ -1,0 +1,114 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: colors 30s linear infinite;
+}
+
+#timer, #editor {
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 180px;
+  color: white;
+  height: 1em;
+}
+
+#timer {
+  display: flex;
+  flex-direction: row;
+  transition: 1s all;
+  overflow: hidden;
+}
+
+#editor {
+  text-align: center;
+  border: none;
+  background: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.digit div {
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+}
+
+.digit.flip {
+  animation: slide .5s ease-out;
+}
+
+#edit {
+  position: absolute;
+  background: radial-gradient(#212121 20%, transparent 20%) no-repeat center center;
+  background-color: white;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  cursor: pointer;
+  top: 50px;
+  right: 50px;
+  overflow: hidden;
+}
+
+#edit-close {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: radial-gradient(white 20%, transparent 20%) no-repeat center center;
+  background-color: rgb(255, 66, 66);
+  top: 100%;
+  transition: all .25s ease-in-out;
+}
+
+.edit-open {
+  top: 0 !important;
+}
+
+@keyframes slide {
+  from {
+    transform: translateY(0em);
+  }
+  
+  to {
+    transform: translateY(-1em);
+  }
+}
+
+@keyframes colors {
+  0% {
+    background-color: rgb(140, 235, 52);
+  }
+
+  20% {
+    background-color: rgb(255, 47, 186);
+  }
+
+  40% {
+    background-color: rgb(134, 127, 238);
+  }
+
+  60% {
+    background-color: rgb(7, 199, 0);
+  }
+
+  80% {
+    background-color: mediumaquamarine;
+  }
+
+  100% {
+    background-color: rgb(140, 235, 52);
+  }
+}
