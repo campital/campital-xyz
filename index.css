@@ -7,10 +7,16 @@ body, html {
     margin: 0;
     padding: 0;
     width: 100%;
-    min-height: 100vh;
+    height: 100%;
     font-family: 'Open Sans', sans-serif;
     line-height: 1.5;
     background-color: #f8f8f8;
+}
+
+#container {
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 40px;
 }
 
 header {
