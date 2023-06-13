@@ -162,6 +162,10 @@ function scheduledStep() {
     draw();
     let setDelay = parseInt(delayInput.value);
     if(setDelay != 0) {
+        if(!(setDelay > 0 && setDelay <= 1000)) {
+            delayInput.value = '100';
+            setDelay = 100;
+        }
         setTimeout(scheduledStep, setDelay);
     } else {
         scheduledStep();
