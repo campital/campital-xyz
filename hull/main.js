@@ -1,5 +1,7 @@
 'use strict';
 
+const pixelsPerUnit = 50;
+
 function quadrant(point) {
     if(point.x >= 0 && point.y >= 0) {
         return 1;
@@ -114,8 +116,10 @@ let lastOutput;
 let currentAlgorithm;
 
 canvas.addEventListener('click', ev => {
+    const pX = ev.offsetX * window.devicePixelRatio;
+    const pY = ev.offsetY * window.devicePixelRatio;
     ev.preventDefault();
-    globalPoints.push({x: ev.offsetX * window.devicePixelRatio, y: ev.offsetY * window.devicePixelRatio});
+    globalPoints.push({x: pX, y: pY});
     resetAlgorithm();
     draw();
 });
@@ -203,6 +207,24 @@ resetAlgButton.addEventListener('click', ev => {
 
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = 'lightgray';
+    for(let x = 0; x < canvas.width; x += pixelsPerUnit) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, canvas.height);
+        ctx.closePath();
+        ctx.stroke();
+    }
+    for(let y = 0; y < canvas.height; y += pixelsPerUnit) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(canvas.width, y);
+        ctx.closePath();
+        ctx.stroke();
+    }
+
     for(let pt of globalPoints) {
         ctx.fillStyle = 'black';
         ctx.beginPath();
