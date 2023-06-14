@@ -106,6 +106,40 @@ class ConvexHullAlgorithm {
     }
 }
 
+class ShoelaceAlgorithm {
+    constructor(points) {
+        if(points.length < 3) {
+            throw new Error('Must provide at least 3 points!');
+        }
+
+        this.points = points;
+        this.reset();
+    }
+
+    step() {
+        if(this.position >= this.points.length - 1) {
+            return 'done';
+        }
+
+        this.position++;
+
+        this.area += (this.points[this.position].x - this.points[this.position - 1].x) * (this.points[this.position].y + this.points[this.position - 1].y) / 2;
+        return 'add';
+    }
+
+    reset() {
+        this.area = 0;
+        this.position = 0;
+    }
+
+    currentPosition() {
+        return this.position;
+    }
+
+    currentArea() {
+        return this.area;
+    }
+}
 
 const canvas = document.getElementById('display');
 const ctx = canvas.getContext('2d');
