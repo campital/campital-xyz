@@ -117,13 +117,17 @@ class ShoelaceAlgorithm {
     }
 
     step() {
-        if(this.position >= this.points.length - 1) {
+        if(this.position >= this.points.length) {
             return 'done';
         }
 
         this.position++;
 
-        this.area += (this.points[this.position].x - this.points[this.position - 1].x) * (this.points[this.position].y + this.points[this.position - 1].y) / 2;
+        if(this.position != this.points.length) {
+            this.area += (this.points[this.position].x - this.points[this.position - 1].x) * (this.points[this.position].y + this.points[this.position - 1].y) / 2;
+        } else {
+            this.area += (this.points[0].x - this.points[this.position - 1].x) * (this.points[0].y + this.points[this.position - 1].y) / 2;
+        }
         return 'add';
     }
 
@@ -137,7 +141,7 @@ class ShoelaceAlgorithm {
     }
 
     currentArea() {
-        return this.area;
+        return Math.abs(this.area);
     }
 }
 
@@ -194,6 +198,13 @@ function scheduledStep() {
     lastOutput = currentAlgorithm.step();
     if(lastOutput == 'done') {
         stopAnimate = true;
+        let hullPoints = [];
+        for(let x of currentAlgorithm.currentSequence()) {
+            hullPoints.push(globalPoints[x]);
+        }
+        const areaAlgorithm = new ShoelaceAlgorithm(hullPoints);
+        while(areaAlgorithm.step() != 'done');
+        console.log(areaAlgorithm.currentArea() / (pixelsPerUnit * pixelsPerUnit));
     } else {
         stepButton.innerText = 'Step (' + (++currentStep) + ')';
     }
