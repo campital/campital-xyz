@@ -177,6 +177,8 @@ startStopButton.addEventListener('click', ev => {
     }
 });
 
+const areaText = document.getElementById('area');
+
 function scheduledStep() {
     if(stopAnimate) {
         stopAnimate = false;
@@ -193,7 +195,7 @@ function scheduledStep() {
         }
         const areaAlgorithm = new ShoelaceAlgorithm(hullPoints);
         while(areaAlgorithm.step() != 'done');
-        console.log(areaAlgorithm.currentArea() / (pixelsPerUnit * pixelsPerUnit));
+        areaText.innerText = 'Area: ' + areaAlgorithm.currentArea() / (pixelsPerUnit * pixelsPerUnit) + ' u';
     } else {
         stepButton.innerText = 'Step (' + (++currentStep) + ')';
     }
@@ -221,6 +223,7 @@ function resetAlgorithm() {
         stopAnimate = true;
     }
     stepButton.innerText = 'Step (' + currentStep + ')';
+    areaText.innerText = 'Area: N/A';
     lastOutput = undefined;
 }
 
