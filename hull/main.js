@@ -33,18 +33,7 @@ function pointCmp(a, b) {
 }
 
 function isClockwise(a, b, c) {
-    let quadA = quadrant({x: b.x - a.x, y: b.y - a.y});
-    let quadB = quadrant({x: c.x - a.x, y: c.y - a.y});
-    let mA = (b.y - a.y) / (b.x - a.x);
-    let mB = (c.y - a.y) / (c.x - a.x);
-    if(mA < 0) {
-        mA = -1 / mA;
-    }
-    if(mB < 0) {
-        mB = -1 / mB;
-    }
-    
-    return (quadA == quadB && mB > mA) || (quadB == quadA + 1 || quadB == quadA - 3) || ((quadB == quadA + 2 || quadB == quadA - 2) && mB < mA);
+    return (b.x - a.x) * (c.y - a.y) - (b.y - a.y) * (c.x - a.x) > 0;
 }
 
 class ConvexHullAlgorithm {
