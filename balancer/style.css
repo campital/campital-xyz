@@ -1,0 +1,109 @@
+*,
+*::after {
+    font-size: 24px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    display: grid;
+    grid-template-columns: calc((100% - 4em) / 2) 4em calc((100% - 4em) / 2);
+    grid-template-rows: 100%;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background: #dfd8d9;
+}
+
+#left {
+    justify-self: right;
+}
+
+#right {
+    justify-self: left;
+}
+
+#left, #right, #reactants, #products {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#yields {
+    justify-self: center;
+    height: 2em;
+    width: 2em;
+    background-color: rgb(233, 60, 233);
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .18s background-color linear;
+}
+
+#yields:hover {
+    background-color: rgb(189, 49, 189);
+}
+
+.formula {
+    height: 2em;
+    border: none;
+    padding: .25em;
+    margin: 0;
+    width: auto;
+    min-width: 1em;
+}
+
+.formula-container {
+    margin-left: .5em;
+    margin-right: .5em;
+    padding: 0;
+    height: 2em;
+}
+
+.formula-sizer {
+    padding: 0;
+    margin: 0;
+    display: inline-grid;
+}
+
+.formula-sizer::after {
+    content: attr(data-value) '  ';
+    visibility: hidden;
+    white-space: pre-wrap;
+}
+
+.add {
+    height: 2em;
+    width: 2em;
+    background-color: rgb(30, 204, 14);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: .18s background-color linear;
+    margin-left: 1em;
+    margin-right: 1em;
+    background-image: url("add.svg");
+    background-repeat: no-repeat;
+    background-size: 80% 80%;
+    background-position: center;
+}
+
+.add:hover {
+    background-color: rgb(30, 177, 17);
+}
+
+.coefficient {
+    color: green;
+    font-weight: bold;
+    margin-right: .2em;
+}
