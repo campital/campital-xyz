@@ -143,8 +143,12 @@ let lastOutput;
 let currentAlgorithm;
 
 canvas.addEventListener('click', ev => {
-    const pX = ev.offsetX * window.devicePixelRatio;
-    const pY = ev.offsetY * window.devicePixelRatio;
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+
+    const pX = (ev.clientX - rect.left) * scaleX;
+    const pY = (ev.clientY - rect.top) * scaleY;
     ev.preventDefault();
     globalPoints.push({x: pX, y: pY});
     resetAlgorithm();
